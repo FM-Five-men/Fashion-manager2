@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f476c15-16f2-482a-9719-d472a146e7e2" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/msa/eurekagateway/filter/JwtAuthenticationManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/msa/eurekagateway/filter/JwtServerAuthenticationConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/msa/eurekagateway/filter/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../fashion-manager/src/main/java/fashionmanager/kim/develop/config/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../fashion-manager2/src/main/java/fashionmanager/kim/develop/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" afterDir="false" />
@@ -19,14 +18,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/modules/eurekagateway.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/eurekagateway.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/msa/eurekagateway/filter/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/msa/eurekagateway/filter/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/msa/eurekagateway/filter/JwtAuthenticationManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/msa/eurekagateway/filter/JwtServerAuthenticationConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/msa/eurekagateway/filter/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-server/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-server/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-server/.gradle/8.14.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-server/.gradle/8.14.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-server/.gradle/8.14.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-server/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-server/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-server/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-server/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-server/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashion-manager/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../fashion-manager/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashion-manager/src/main/java/fashionmanager/kim/develop/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fashion-manager/src/main/java/fashionmanager/kim/develop/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashion-manager/src/main/java/fashionmanager/kim/develop/security/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fashion-manager/src/main/java/fashionmanager/kim/develop/security/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../fashion-manager2/.gradle/8.14.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../fashion-manager2/.gradle/8.14.3/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../fashion-manager2/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../fashion-manager2/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../fashion-manager2/.gradle/8.14.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../fashion-manager2/.gradle/8.14.3/fileHashes/fileHashes.bin" afterDir="false" />
@@ -36,7 +39,6 @@
       <change beforePath="$PROJECT_DIR$/../fashion-manager2/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../fashion-manager2/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../fashion-manager2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../fashion-manager2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../fashion-manager2/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../fashion-manager2/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashion-manager2/src/main/java/fashionmanager/kim/develop/config/SwaggerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fashion-manager2/src/main/java/fashionmanager/kim/develop/config/SwaggerConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +62,17 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="eurekagateway" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="eurekagateway" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="eurekagateway" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -88,28 +101,62 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.eureka-gateway 빌드.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.EurekaGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/부트캠프 2차 프로젝트/eureka-gateway&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.eureka-gateway [clean].executor": "Run",
+    "Gradle.eureka-gateway 빌드.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.EurekaGatewayApplication.executor": "Run",
+    "git-widget-placeholder": "features-KSM-VueSpringConnection",
+    "last_opened_file_path": "D:/부트캠프 2차 프로젝트/eureka-gateway",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.EurekaGatewayApplication">
+    <configuration name="eureka-gateway [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="eurekagateway" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="eurekagateway" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
     <configuration name="EurekaGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="eurekagateway.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="msa.eurekagateway.EurekaGatewayApplication" />
@@ -117,6 +164,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.eureka-gateway [clean]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -142,6 +194,7 @@
       <workItem from="1759224831486" duration="15000" />
       <workItem from="1759224868595" duration="1497000" />
       <workItem from="1759386225727" duration="4666000" />
+      <workItem from="1760405172628" duration="7331000" />
     </task>
     <servers />
   </component>
