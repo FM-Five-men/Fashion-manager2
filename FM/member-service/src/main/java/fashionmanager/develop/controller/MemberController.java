@@ -79,7 +79,8 @@ public class MemberController {
     @PostMapping("/memberlogin")
     public ResponseEntity<String> memberLogin(String memberId, String memberPwd){
         String result = ms.memberLogin(memberId, memberPwd);
-
+        System.out.println("memberId = " + memberId);
+        System.out.println("memberPwd = " + memberPwd);
         return ResponseEntity.ok(result);
     }
 }
