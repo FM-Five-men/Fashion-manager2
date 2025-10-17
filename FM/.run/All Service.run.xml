@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="All Service" type="CompoundRunConfigurationType">
-    <toRun name="EurekaGatewayApplication" type="SpringBootApplicationConfigurationType" />
-    <toRun name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" />
-    <toRun name="FashionManagerApplication" type="SpringBootApplicationConfigurationType" />
-    <toRun name="FashionManagerApplication2" type="SpringBootApplicationConfigurationType" />
-    <method v="2" />
-  </configuration>
-</component>

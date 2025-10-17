@@ -25,9 +25,8 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "features-KSM-VueSpringConnection",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/부트캠프 2차 프로젝트",
@@ -59,8 +58,6 @@
       <workItem from="1759137517851" duration="15000" />
       <workItem from="1759191761985" duration="3000" />
       <workItem from="1759215166974" duration="352000" />
-      <workItem from="1760402969495" duration="942000" />
-      <workItem from="1760598489111" duration="588000" />
     </task>
     <servers />
   </component>
