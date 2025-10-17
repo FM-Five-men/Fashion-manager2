@@ -1,3 +1,13 @@
+# IDE #
+.idea/
+*.iml
+*.iws
+
+# Gradle #
+.gradle/
+build/
+out/
+
 # Log files #
 *.log
 logs/
