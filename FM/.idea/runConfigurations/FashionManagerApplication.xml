@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="FashionManagerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <module name="member-service.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="fashionmanager.FashionManagerApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+
+
+      <option name="RunConfigurationTask" enabled="true">
+        <RunConfigurationTask name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" />
+      </option>
+    </method>
+  </configuration>
+</component>
