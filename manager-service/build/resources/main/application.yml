@@ -1,7 +1,9 @@
+server:
+  port: 8081
 
 spring:
   application:
-    name: member-service
+    name: manager-service
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://localhost:3306/fashion_manager
@@ -16,7 +18,8 @@ spring:
 
   web:
     resources:
-      static-locations: file:///C:/uploadFiles/
+      #     수정 부분
+      static-locations: file:///${user.dir}/uploadFiles/
       cache:
         period: 3600   # Spring Boot 2.6+ 권장 표기 (기존 cache-period 대체)
 
@@ -33,7 +36,6 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:/mappers/**/*.xml
   type-aliases-package: fashionmanager.song.develop
-
 
 token:
   expiration_time: 86400000
@@ -53,3 +55,8 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 # 사용자 정의 프로퍼티 (필요시 @Value("${filepath}") 로 주입)
 filepath: C:/uploadFiles/
+
+# 수정부분
+file:
+  upload-root: ${user.dir}/uploadFiles
+
