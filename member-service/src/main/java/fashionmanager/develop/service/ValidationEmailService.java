@@ -1,5 +1,7 @@
 package fashionmanager.develop.service;
 
+import fashionmanager.develop.dto.MemberDTO;
+import fashionmanager.develop.mapper.MemberMapper;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -11,11 +13,19 @@ import org.springframework.stereotype.Service;
 public class ValidationEmailService {
 
     private final JavaMailSender javaMailSender;
+    private final MemberMapper memberMapper;
 
     public static int createNumber() {
         return (int)(Math.random() * (90000)) +100000;
     }
     public int sendMail(String mail) {
+
+        MemberDTO member = memberMapper.selectMemberByEmail(mail);
+
+        if(member == null) {
+            return 0;
+        }
+
         MimeMessage message = javaMailSender.createMimeMessage();
         String senderEmail= "indy03222100@gmail.com";
         int number = createNumber();
