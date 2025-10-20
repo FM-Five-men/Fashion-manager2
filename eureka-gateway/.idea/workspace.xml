@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4fd58b0-8fef-4cdb-98f5-580f2525571d" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/mapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/mapper/MemberMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/service/ValidationEmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/service/ValidationEmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../member-service/src/main/resources/fashionmanager/develop/mapper/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/resources/fashionmanager/develop/mapper/MemberMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eureka-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/8.14.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/file-system.probe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
