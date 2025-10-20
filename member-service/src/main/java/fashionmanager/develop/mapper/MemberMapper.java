@@ -17,5 +17,7 @@ public interface MemberMapper {
 
     MemberDTO selectMemberById(@Param("selectMemberId")String memberId);
 
+    MemberDTO selectMemberByEmail(@Param("selectMemberEmail")String memberEmail);
+
     MemberRightDTO selectMemberRightById(@Param("selectMemberId")String memberId);
 }
