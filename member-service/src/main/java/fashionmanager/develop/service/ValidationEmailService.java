@@ -50,4 +50,36 @@ public class ValidationEmailService {
 
         return number;
     }
+
+    public int sendMailPassword(String mail, String id) {
+        MemberDTO member = memberMapper.selectMemberByEmailAndId(mail, id);
+
+        if(member == null) {
+            return 0;
+        }
+
+        MimeMessage message = javaMailSender.createMimeMessage();
+        String senderEmail= "indy03222100@gmail.com";
+        int number = createNumber();
+
+        try{
+            message.setFrom(senderEmail);
+            message.setRecipients(MimeMessage.RecipientType.TO,mail);
+            message.setSubject("Fashion-Manager 인증번호");
+            String body = "";
+            body += "<h3>" + "인증번호 입니다." + "</h3>";
+            body += "<h1>" + number + "</h1>";
+            message.setText(body,"UTF-8","html");
+
+            if(body.equals("") || number == 0){
+                return 0;
+            }
+
+            javaMailSender.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+
+        return number;
+    }
 }
