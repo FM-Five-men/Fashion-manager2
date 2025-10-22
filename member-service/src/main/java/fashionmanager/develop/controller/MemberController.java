@@ -32,6 +32,15 @@ public class MemberController {
         return ResponseEntity.ok(memberList);
     }
 
+    @PostMapping("/selectmemberemail")
+    public ResponseEntity<MemberDTO> selectMemberEmail(String mail){
+        MemberDTO member = ms.selectMemberEmail(mail);
+        if(member == null){
+            return ResponseEntity.ok(null);
+        }
+        return ResponseEntity.ok(member);
+    }
+
     @PostMapping("/insertadmin")
     public ResponseEntity<String> insertAdmin(@RequestBody InsertMemberDTO insertMemberDTO){
         List<MemberDTO> memberList = ms.selectMember();
@@ -82,4 +91,6 @@ public class MemberController {
 
         return ResponseEntity.ok(result);
     }
+
+
 }

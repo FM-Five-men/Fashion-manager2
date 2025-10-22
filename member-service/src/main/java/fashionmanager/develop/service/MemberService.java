@@ -132,6 +132,14 @@ public class MemberService {
             }
         }
     }
+
+    public MemberDTO selectMemberEmail(String mail) {
+        MemberDTO member = memberMapper.selectMemberByEmail(mail);
+        if(member == null){
+            return null;
+        }
+        return member;
+    }
 }
 
 
