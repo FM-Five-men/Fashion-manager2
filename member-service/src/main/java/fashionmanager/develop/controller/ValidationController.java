@@ -27,4 +27,13 @@ public class ValidationController {
         }
         return ResponseEntity.ok(result);
     }
+
+    @PostMapping("/sendmailpassword")
+    public ResponseEntity<Integer> sendMailPassword(String mail, String id) {
+        int result = emailService.sendMailPassword(mail, id);
+        if(result == 0){
+            return ResponseEntity.ok(0);
+        }
+        return ResponseEntity.ok(result);
+    }
 }
