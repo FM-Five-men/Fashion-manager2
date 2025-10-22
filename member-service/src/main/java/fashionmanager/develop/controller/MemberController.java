@@ -7,6 +7,7 @@ import fashionmanager.develop.dto.UpdateRightDTO;
 import fashionmanager.develop.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +18,11 @@ import java.util.List;
 public class MemberController {
 
     private final MemberService ms;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.ms = memberService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
 
@@ -83,6 +86,22 @@ public class MemberController {
             log.info("회원의 권한 변경이 실패하였습니다.");
             return ResponseEntity.ok("회원의 권한 변경이 실패하였습니다.");
         }
+    }
+
+    @PostMapping("/updatepassword")
+    public ResponseEntity<Integer> updatePassword(String id, String changePassword, String checkPassword){
+        if(changePassword.equals(checkPassword)){
+            String updatePassword = bCryptPasswordEncoder.encode(checkPassword);
+            int result = ms.updatePassword(id,updatePassword);
+            if(result == 1){
+                return ResponseEntity.ok(1);
+            }else{
+                return ResponseEntity.ok(0);
+            }
+        }else{
+            return ResponseEntity.ok(0);
+        }
+
     }
 
     @PostMapping("/memberlogin")

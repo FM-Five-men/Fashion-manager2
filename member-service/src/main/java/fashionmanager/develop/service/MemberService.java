@@ -140,6 +140,16 @@ public class MemberService {
         }
         return member;
     }
+
+    @Transactional
+    public int updatePassword(String id, String updatePassword) {
+        int result = memberRepository.updatePassword(id, updatePassword);
+        if(result == 1){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 }
 
 
