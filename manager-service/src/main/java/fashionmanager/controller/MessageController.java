@@ -31,7 +31,7 @@ public class MessageController {
         return ResponseEntity.ok(messageList);
     }
 
-    @GetMapping("/selectsendermessage")
+    @PostMapping("/selectsendermessage")
     public ResponseEntity<List<SelectMassageDTO>> selectSenderMessage(String senderId) {
         List<SelectMassageDTO> messageList = ms.selectSenderMessage(senderId);
         for (SelectMassageDTO messageDTO : messageList) {
@@ -41,7 +41,7 @@ public class MessageController {
         return ResponseEntity.ok(messageList);
     }
 
-    @GetMapping("/selectreceivermessage")
+    @PostMapping("/selectreceivermessage")
     public ResponseEntity<List<SelectMassageDTO>> selectReceiverMessage(String receiverId) {
         List<SelectMassageDTO> messageList = ms.selectReceiverMessage(receiverId);
         for (SelectMassageDTO messageDTO : messageList) {
@@ -74,5 +74,4 @@ public class MessageController {
             return ResponseEntity.ok("메시지 삭제에 실패했습니다.");
         }
     }
-
 }

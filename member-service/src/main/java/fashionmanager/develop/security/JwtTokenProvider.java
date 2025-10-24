@@ -76,6 +76,14 @@ public class JwtTokenProvider {
         return memberState;
     }
 
+    public String getMemberEmailFromToken(String token){
+        String memberEmail = Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token).getBody().get("email",String.class);
+        return memberEmail;
+    }
+
     public String resolveToken(HttpServletRequest request){
         String token = request.getHeader("Authorization");
 

@@ -4,13 +4,16 @@ import fashionmanager.develop.dto.AssignedRightDTO;
 import fashionmanager.develop.dto.InsertMemberDTO;
 import fashionmanager.develop.dto.MemberDTO;
 import fashionmanager.develop.dto.UpdateRightDTO;
+import fashionmanager.develop.security.JwtTokenProvider;
 import fashionmanager.develop.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -19,10 +22,12 @@ public class MemberController {
 
     private final MemberService ms;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
 
-    public MemberController(MemberService memberService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public MemberController(MemberService memberService, BCryptPasswordEncoder bCryptPasswordEncoder, JwtTokenProvider jwtTokenProvider) {
         this.ms = memberService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
 
@@ -76,6 +81,38 @@ public class MemberController {
         }
     }
 
+    @PostMapping("/insertmember")
+    public ResponseEntity<String> insertMember(@RequestBody InsertMemberDTO insertMemberDTO){
+        List<MemberDTO> memberList = ms.selectMember();
+        for (MemberDTO member : memberList){
+            if(member.getMemberId().equals(insertMemberDTO.getMemberId())){
+                log.info("이미 존재하는 관리자 아이디입니다.");
+                return ResponseEntity.ok("이미 존재하는 관리자 아이디입니다.");
+            }
+        }
+
+        int result = ms.insertMember(insertMemberDTO);
+        if(result == 1){
+            MemberDTO member = ms.selectMemberById(insertMemberDTO.getMemberId()); //관리자로 회원가입한 회원의 회원 번호를 확인하기 위한 코드
+            int insertAdminNum = member.getMemberNum();
+            AssignedRightDTO assignedRightDTO = new AssignedRightDTO();
+            assignedRightDTO.setAssignedRightMemberStateNum(2);
+            assignedRightDTO.setAssignedRightMemberNum(insertAdminNum);
+            int result2 = ms.insertMemberRight(assignedRightDTO);
+            if(result2 == 1){
+                log.info("회원가입에 성공했습니다.");
+                return ResponseEntity.ok("회원가입에 성공했습니다.");
+            }else{
+                log.info("2단계에서 회원가입에 실패했습니다.");
+                return ResponseEntity.ok("회원가입에 실패했습니다.");
+            }
+
+        }else{
+            log.info("1단계에서 회원가입에 실패했습니다.");
+            return ResponseEntity.ok("회원가입에 실패했습니다.");
+        }
+    }
+
     @PostMapping("/updateright")
     public ResponseEntity<String> updateRight(@RequestBody UpdateRightDTO updateRightDTO){
         int result = ms.updateRight(updateRightDTO);
@@ -111,5 +148,39 @@ public class MemberController {
         return ResponseEntity.ok(result);
     }
 
+    @PostMapping("/adminlogin")
+    public ResponseEntity<String> adminLogin(String adminId, String adminPwd){
+        String result = ms.adminLogin(adminId, adminPwd);
+
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/auth")
+    public ResponseEntity<Map<String, Object>> testToken(@RequestHeader("Authorization") String authHeader) {
+
+        System.out.println("Authorization 헤더: " + authHeader);
+
+        String token = authHeader.replace("Bearer ", "");
+        System.out.println("토큰 추출: " + token);
+
+        boolean result = jwtTokenProvider.validateToken(token);
+        if(result){
+            String memberId = jwtTokenProvider.getMemberIdFromToken(token);
+            String memberEmail = jwtTokenProvider.getMemberEmailFromToken(token);
+            String memberState = jwtTokenProvider.getMemberStateFromToken(token);
+            Map<String, Object> map = new HashMap<>();
+            map.put("memberId", memberId);
+            map.put("memberEmail", memberEmail);
+            map.put("memberState", memberState);
+            return ResponseEntity.ok(map);
+        }else{
+            Map<String, Object> map = new HashMap<>();
+            map.put("memberId", null);
+            map.put("memberEmail", null);
+            map.put("memberState", null);
+            return ResponseEntity.ok(map);
+        }
+
+    }
 
 }
