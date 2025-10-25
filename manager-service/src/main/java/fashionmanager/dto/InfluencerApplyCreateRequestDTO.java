@@ -17,6 +17,9 @@ public class InfluencerApplyCreateRequestDTO {
     private String accept;
     private Integer memberNum;
 
+    private Integer likes;
+    private Integer cheers;
+
     private String memberName;
 
     //  이미지 관련 코드

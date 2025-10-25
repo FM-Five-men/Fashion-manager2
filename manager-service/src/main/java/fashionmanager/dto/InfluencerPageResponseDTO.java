@@ -11,12 +11,15 @@ import java.util.List;
 @ToString
 public class InfluencerPageResponseDTO {
 
-    private int num;
+    private Integer num;
     private String title;
     private String content;
     private String insta;
     private String phone;
-    private int memberNum;
+    private Integer memberNum;
+
+    private Integer likes;
+    private Integer cheers;
 
     private String memberName;
 

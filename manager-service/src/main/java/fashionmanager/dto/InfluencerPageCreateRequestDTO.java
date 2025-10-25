@@ -11,17 +11,20 @@ import java.util.List;
 @ToString
 public class InfluencerPageCreateRequestDTO {
 
-    private int num;
+    private Integer num;
     private String title;
     private String content;
     private String insta;
     private String phone;
-    private int memberNum;
+    private Integer memberNum;
 
+    private Integer likes;
+    private Integer cheers;
 
     private String memberName;
 
 
     //  이미지 관련 코드
     private List<String> photoPaths;
+
 }
