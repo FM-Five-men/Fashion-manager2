@@ -50,7 +50,10 @@ public class InfluencerPageService {
 
         // 각각 페이지의 사진 목록을 조회해서 /files/influencer_page/파일명 형태의 URL로 세팅
         for (InfluencerPageResponseDTO dto : list) {
-            int pageNum = dto.getNum();
+
+            int pageNum = dto.getNum();          // INFLUENCER_PAGE.NUM
+            Integer mNum = dto.getMemberNum();   // MEMBER.NUM (인플루언서 회원번호)
+
             List<String> urls = photoRepository
                     .findAllByPostNumAndPhotoCategoryNum(pageNum, INFLUENCER_PAGE_CODE)
                     .stream()
@@ -58,9 +61,19 @@ public class InfluencerPageService {
                     .map(p -> "/files/influencer_page/" + p.getName())
                     .toList();
             dto.setPhotoPaths(urls);
+
+        if (mNum != null) {
+            List<String> badges = influencerPageMapper.selectInfluencerBadges((int) mNum.longValue());
+            dto.setBadges(badges != null ? badges : Collections.emptyList());
+        } else {
+            dto.setBadges(Collections.emptyList());
         }
+    }
         return list;
     }
+
+
+
 
 
     // 페이지 생성 (+ 선택적 사진 업로드)

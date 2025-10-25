@@ -17,8 +17,10 @@ public class InfluencerApplyCreateRequestDTO {
     private String accept;
     private Integer memberNum;
 
+    // 칭호 좋아요 힘내요 추가
     private Integer likes;
     private Integer cheers;
+    private List<String> badges;
 
     private String memberName;
 

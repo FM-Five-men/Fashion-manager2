@@ -25,4 +25,8 @@ public interface InfluencerPageMapper {
                                                     @Param("offset") int offset,
                                                     @Param("limit") int limit
     );
+
+    // ✅ 추가: 해당 member의 뱃지 이름들만 뽑아오는 쿼리
+    List<String> selectInfluencerBadges(Integer memberNum);
 }
+

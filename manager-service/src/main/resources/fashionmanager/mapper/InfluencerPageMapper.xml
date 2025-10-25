@@ -82,4 +82,14 @@
         LIMIT #{offset}, #{limit}
     </select>
 
+    <select id="selectInfluencerBadges" parameterType="Integer" resultType="string">
+
+        SELECT
+        b.name
+        FROM Assigned_Badge a
+        JOIN Badge b
+        ON b.num = a.badge_num
+        WHERE a.member_num = #{memberNum}
+
+    </select>
 </mapper>
