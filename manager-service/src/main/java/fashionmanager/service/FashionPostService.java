@@ -8,6 +8,7 @@ import fashionmanager.dto.*;
 import fashionmanager.repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,8 +29,14 @@ public class FashionPostService {
     private final PostReactionRepository postReactionRepository;
     private final PostFashionItemRepository postFashionItemRepository;
     private static final Set<String> VALID_REACTION_TYPES = Set.of("good", "cheer");
-    private String postUploadPath = "C:\\uploadFiles\\fashion";
-    private String fashionItemsUploadPath = "C:\\uploadFiles\\fashion_items";
+
+    // 실행 경로 기준 업로드 루트 (WebConfig의 file.upload-root 기본값과 일치)
+    @Value("${file.upload-root}")
+    private String uploadRoot;
+
+    // 게시물/아이템 하위 폴더
+    private static final String DIR_POST  = "fashion";
+    private static final String DIR_ITEM  = "fashion_items";
 
 
     @Autowired
@@ -73,25 +80,18 @@ public class FashionPostService {
         }
         postDetail.setTemp(temp);
 
-        if(postDetail.getPhotos() != null) {
-            for(PhotoDTO photo : postDetail.getPhotos()) {
-                String subPath = "";
-                if(photo.getPhotoCategoryNum() == 1) {
-                    subPath = "fashion/";
-                } else if(photo.getPhotoCategoryNum() == 4) {
-                    subPath = "fashion_items/";
-                }
-                String imageUrl = "/images/" + extractFolderName(photo.getPath()) + "/" + photo.getName();
-                photo.setImageUrl(imageUrl);
+        if (postDetail.getPhotos() != null) {
+            for (PhotoDTO photo : postDetail.getPhotos()) {
+                // DB에 저장된 물리 경로에서 폴더명만 추출 (fashion / fashion_items)
+                String folder = extractFolderName(photo.getPath()); // ex) fashion or fashion_items
+                photo.setImageUrl("/files/" + folder + "/" + photo.getName());
             }
         }
         return postDetail;
     }
 
     private String extractFolderName(String path) {
-        if(path == null || path.isEmpty()) {
-            return "";
-        }
+        if (path == null || path.isEmpty()) return "";
         return new File(path).getName();
     }
 
@@ -112,56 +112,8 @@ public class FashionPostService {
             FashionHashTagEntity fashionHashTagEntity = new FashionHashTagEntity(fashionHashTagPK);
             fashionHashRepository.save(fashionHashTagEntity);
         }
-        /* 설명. 3-1. photo table에 게시물 사진 등록, 사진 카테고리 번호 1 = 패션 게시물 */
-        if (postFiles != null && !postFiles.isEmpty()) {
-            File uploadDir = new File(postUploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdirs(); // 경로에 해당하는 폴더가 없으면 생성해줌
-            }
-            for (MultipartFile imageFile : postFiles) {
-                String originalFileName = imageFile.getOriginalFilename();
-                String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-                String savedFileName = UUID.randomUUID().toString() + extension;
-
-                File targetFile = new File(postUploadPath + File.separator + savedFileName);
-                try {
-                    imageFile.transferTo(targetFile);
-                } catch (IOException e) {
-                    throw new RuntimeException("파일 저장에 실패했습니다", e);
-                }
-                PhotoEntity photoEntity = new PhotoEntity();
-                photoEntity.setName(savedFileName); // 고유한 이름으로 저장
-                photoEntity.setPath(postUploadPath);
-                photoEntity.setPostNum(postNum);    // postNum과 CategoryNum 지정
-                photoEntity.setPhotoCategoryNum(1); // 패션 게시물 사진은 1
-                photoRepository.save(photoEntity);
-            }
-        }
-        /* 설명. 3-2. 패션 아이템 사진 등록, 사진 카테고리 번호 4 = 패션 아이템 */
-        if (itemFiles != null && !itemFiles.isEmpty()) {
-            File uploadDir = new File(fashionItemsUploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdirs(); // 경로에 해당하는 폴더가 없으면 생성해줌
-            }
-            for (MultipartFile imageFile : itemFiles) {
-                String originalFileName = imageFile.getOriginalFilename();
-                String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-                String savedFileName = UUID.randomUUID().toString() + extension;
-
-                File targetFile = new File(fashionItemsUploadPath + File.separator + savedFileName);
-                try {
-                    imageFile.transferTo(targetFile);
-                } catch (IOException e) {
-                    throw new RuntimeException("파일 저장에 실패했습니다", e);
-                }
-                PhotoEntity photoEntity = new PhotoEntity();
-                photoEntity.setName(savedFileName); // 고유한 이름으로 저장
-                photoEntity.setPath(fashionItemsUploadPath);
-                photoEntity.setPostNum(postNum);    // postNum과 CategoryNum 저장
-                photoEntity.setPhotoCategoryNum(4); // 패션 아이템 사진은 4
-                photoRepository.save(photoEntity);
-            }
-        }
+        savePhotos(postNum, DIR_POST, 1, postFiles); // 게시글 이미지
+        savePhotos(postNum, DIR_ITEM, 4, itemFiles); // 아이템 이미지
 
         List<String> savedItemNames = new ArrayList<>();
         for (String itemName : newPost.getItems()) { // 전달받은 아이템 이름 목록 순회
@@ -202,6 +154,35 @@ public class FashionPostService {
         return fashionPostEntity;
     }
 
+    private void savePhotos(int postNum, String subDir, int categoryNum, List<MultipartFile> files) {
+        if (files == null || files.isEmpty()) return;
+
+        File uploadDir = new File(uploadRoot, subDir); // ex) {user.dir}/uploadFiles/fashion
+        if (!uploadDir.exists() && !uploadDir.mkdirs())
+            throw new RuntimeException("이미지 저장 폴더 생성 실패: " + uploadDir.getAbsolutePath());
+
+        for (MultipartFile f : files) {
+            if (f.isEmpty()) continue;
+            String orig = f.getOriginalFilename();
+            String ext = (orig != null && orig.contains(".")) ? orig.substring(orig.lastIndexOf(".")) : "";
+            String savedName = UUID.randomUUID() + ext;
+
+            File target = new File(uploadDir, savedName);
+            try {
+                f.transferTo(target);
+            } catch (IOException e) {
+                throw new RuntimeException("파일 저장 실패: " + target.getAbsolutePath(), e);
+            }
+
+            PhotoEntity p = new PhotoEntity();
+            p.setName(savedName);
+            p.setPath(uploadDir.getAbsolutePath()); // DB에는 물리경로 저장 (…/uploadFiles/fashion)
+            p.setPostNum(postNum);
+            p.setPhotoCategoryNum(categoryNum);
+            photoRepository.save(p);
+        }
+    }
+
 
     @Transactional
     public FashionModifyResponseDTO modifyPost(int postNum, FashionModifyRequestDTO updatePost,
@@ -221,8 +202,8 @@ public class FashionPostService {
         List<Integer> updateItems = updateItems(postNum, updatePost.getItems());
 
         /* 5. 사진 업데이트 (파일 처리는 기존의 'Delete & Insert' 방식 유지) */
-        updatePhotos(fashionPostEntity, this.postUploadPath, postFiles, 1); // 게시물 사진 업데이트
-        updatePhotos(fashionPostEntity, this.fashionItemsUploadPath, itemFiles, 4); // 패션 아이템 사진 업데이트
+        updatePhotos(fashionPostEntity, uploadRoot, postFiles, 1); // 게시물 사진 업데이트
+        updatePhotos(fashionPostEntity, uploadRoot, itemFiles, 4); // 패션 아이템 사진 업데이트
 
         /* 6. 최종 응답 DTO 생성 */
         FashionModifyResponseDTO response = new FashionModifyResponseDTO();
@@ -290,24 +271,16 @@ public class FashionPostService {
     private void updatePhotos(FashionPostEntity post, String uploadPath, List<MultipartFile> newImageFiles, int categoryNum) {
         /* 설명. 1. 기존 사진 파일 및 DB 정보 삭제 */
         int postNum = post.getNum();
-        List<PhotoEntity> photosToUpdate = photoRepository.findAllByPostNumAndPhotoCategoryNum(postNum, categoryNum);
-        for (PhotoEntity photo : photosToUpdate) {
-            File fileToDelete = new File(photo.getPath() + File.separator + photo.getName());
-            if (fileToDelete.exists()) {
-                boolean deleted = fileToDelete.delete();
-                if (!deleted) {
-                    log.info("수정 중 사진 파일 삭제에 실패했습니다. {}", fileToDelete.getPath());  // 삭제 실패했다면 log로 남김
-                }
-            }
-
+        List<PhotoEntity> old = photoRepository.findAllByPostNumAndPhotoCategoryNum(postNum, categoryNum);
+        for (PhotoEntity photo : old) {
+            File f = new File(photo.getPath(), photo.getName());
+            if (f.exists() && !f.delete()) log.info("수정 중 사진 파일 삭제 실패: {}", f.getPath());
         }
-        photoRepository.deleteAll(photosToUpdate);
+        photoRepository.deleteAll(old);
 
-        /* 설명. 2. 새로운 사진 파일 추가 */
-        if (newImageFiles != null && !newImageFiles.isEmpty()) {
-            saveNewPhotos(post, uploadPath, newImageFiles, categoryNum);
-        }
-
+        // ✅ uploadPath 대신 uploadRoot/subDir 계산으로 저장하도록 변경
+        String subDir = (categoryNum == 1) ? DIR_POST : DIR_ITEM;
+        savePhotos(postNum, subDir, categoryNum, newImageFiles);
     }
 
     private void saveNewPhotos(FashionPostEntity post, String uploadPath,
