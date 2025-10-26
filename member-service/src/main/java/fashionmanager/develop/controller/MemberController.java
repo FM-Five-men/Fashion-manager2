@@ -1,9 +1,6 @@
 package fashionmanager.develop.controller;
 
-import fashionmanager.develop.dto.AssignedRightDTO;
-import fashionmanager.develop.dto.InsertMemberDTO;
-import fashionmanager.develop.dto.MemberDTO;
-import fashionmanager.develop.dto.UpdateRightDTO;
+import fashionmanager.develop.dto.*;
 import fashionmanager.develop.security.JwtTokenProvider;
 import fashionmanager.develop.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +35,15 @@ public class MemberController {
             log.info("memberDTO:{}",memberDTO);
         }
         return ResponseEntity.ok(memberList);
+    }
+
+    @GetMapping("/selectmemberright")
+    public ResponseEntity<List<MemberRightDTO>> selectMemberRight(){
+        List<MemberRightDTO> memberRightList = ms.selectMemberRight();
+        for (MemberRightDTO memberRightDTO : memberRightList){
+            log.info("memberRightDTO:{}",memberRightDTO);
+        }
+        return ResponseEntity.ok(memberRightList);
     }
 
     @PostMapping("/selectmemberemail")

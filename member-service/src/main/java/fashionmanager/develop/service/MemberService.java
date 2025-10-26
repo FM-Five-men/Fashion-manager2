@@ -196,6 +196,9 @@ public class MemberService {
     }
 
 
+    public List<MemberRightDTO> selectMemberRight() {
+        return memberMapper.selectMemberRight();
+    }
 }
 
 
