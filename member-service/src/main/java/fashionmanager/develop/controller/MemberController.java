@@ -131,6 +131,12 @@ public class MemberController {
         }
     }
 
+//    @PostMapping("/updatestate")
+//    public ResponseEntity<String> updateState(String id, String updateState){
+//        int result = ms.updateState(id, updateState);
+//        if(result)
+//    }
+
     @PostMapping("/updatepassword")
     public ResponseEntity<Integer> updatePassword(String id, String changePassword, String checkPassword){
         if(changePassword.equals(checkPassword)){
@@ -174,16 +180,19 @@ public class MemberController {
             String memberId = jwtTokenProvider.getMemberIdFromToken(token);
             String memberEmail = jwtTokenProvider.getMemberEmailFromToken(token);
             String memberState = jwtTokenProvider.getMemberStateFromToken(token);
+            int memberNum = jwtTokenProvider.getMemberNumFromToken(token);
             Map<String, Object> map = new HashMap<>();
             map.put("memberId", memberId);
             map.put("memberEmail", memberEmail);
             map.put("memberState", memberState);
+            map.put("memberNum", memberNum);
             return ResponseEntity.ok(map);
         }else{
             Map<String, Object> map = new HashMap<>();
             map.put("memberId", null);
             map.put("memberEmail", null);
             map.put("memberState", null);
+            map.put("memberNum", null);
             return ResponseEntity.ok(map);
         }
 
