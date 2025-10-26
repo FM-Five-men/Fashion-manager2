@@ -188,7 +188,7 @@ public class FashionPostService {
         response.setContent(registFashionPost.getContent());
         response.setHashtag(newPost.getHashtag());
         response.setItems(savedItemNames);
-        response.setMember_num(registFashionPost.getMember_num());
+        response.setMemberNum(registFashionPost.getMemberNum());
         return response;
     }
 
@@ -198,7 +198,7 @@ public class FashionPostService {
         fashionPostEntity.setContent(newPost.getContent());
         fashionPostEntity.setGood(0);
         fashionPostEntity.setCheer(0);
-        fashionPostEntity.setMember_num(newPost.getMemberNum());
+        fashionPostEntity.setMemberNum(newPost.getMemberNum());
         return fashionPostEntity;
     }
 
@@ -229,7 +229,7 @@ public class FashionPostService {
         response.setNum(postNum);
         response.setTitle(fashionPostEntity.getTitle());
         response.setContent(fashionPostEntity.getContent());
-        response.setMember_num(fashionPostEntity.getMember_num());
+        response.setMemberNum(fashionPostEntity.getMemberNum());
         response.setHashtag(updateTags);
         response.setItems(updateItems);
         return response;
