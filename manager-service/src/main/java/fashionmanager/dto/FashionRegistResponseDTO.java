@@ -18,5 +18,5 @@ public class FashionRegistResponseDTO {
     private int cheer = 0;
     private double temp;
     private List<Integer> hashtag;
-    private List<Integer> items;
+    private List<String> items;
 }

@@ -14,10 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,6 +26,7 @@ public class FashionPostService {
     private final PhotoRepository photoRepository;
     private final FashionPostMapper fashionPostMapper;
     private final PostReactionRepository postReactionRepository;
+    private final PostFashionItemRepository postFashionItemRepository;
     private static final Set<String> VALID_REACTION_TYPES = Set.of("good", "cheer");
     private String postUploadPath = "C:\\uploadFiles\\fashion";
     private String fashionItemsUploadPath = "C:\\uploadFiles\\fashion_items";
@@ -37,13 +35,15 @@ public class FashionPostService {
     @Autowired
     public FashionPostService(FashionPostRepository fashionPostRepository, FashionHashRepository fashionHashRepository,
                               FashionItemRepository fashionItemRepository, PhotoRepository photoRepository,
-                              FashionPostMapper fashionPostMapper, PostReactionRepository postReactionRepository) {
+                              FashionPostMapper fashionPostMapper, PostReactionRepository postReactionRepository,
+                              PostFashionItemRepository postFashionItemRepository) {
         this.fashionPostRepository = fashionPostRepository;
         this.fashionHashRepository = fashionHashRepository;
         this.fashionItemRepository = fashionItemRepository;
         this.photoRepository = photoRepository;
         this.fashionPostMapper = fashionPostMapper;
         this.postReactionRepository = postReactionRepository;
+        this.postFashionItemRepository = postFashionItemRepository;
     }
 
     public List<SelectAllFashionPostDTO> getPostList() {
@@ -163,11 +163,22 @@ public class FashionPostService {
             }
         }
 
-        /* 설명. 4. fashion_item table에 아이템 등록 */
-        for (Integer itemNums : newPost.getItems()) {
-            FashionPostItemPK fashionPostItemPK = new FashionPostItemPK(postNum, itemNums);
+        List<String> savedItemNames = new ArrayList<>();
+        for (String itemName : newPost.getItems()) { // 전달받은 아이템 이름 목록 순회
+            // 1. FashionItemEntity 생성 (price, link는 기본값/null)
+            FashionItemEntity newItem = new FashionItemEntity();
+            newItem.setName(itemName);
+
+            // 2. fashion_item 테이블에 무조건 저장 (중복 검사 없음)
+            FashionItemEntity savedItem = postFashionItemRepository.save(newItem);
+            int itemNum = savedItem.getNum(); // 저장 후 생성된 ID 가져오기
+
+            // 3. post_item 중간 테이블에 게시글과 아이템 관계 저장
+            FashionPostItemPK fashionPostItemPK = new FashionPostItemPK(postNum, itemNum);
             FashionPostItemEntity fashionPostItemEntity = new FashionPostItemEntity(fashionPostItemPK);
-            fashionItemRepository.save(fashionPostItemEntity); // 반복문 안에서 매번 저장
+            fashionItemRepository.save(fashionPostItemEntity);
+
+            savedItemNames.add(itemName); // 저장된 아이템 이름을 응답 리스트에 추가
         }
 
         /* 설명. 5. responseDTO 생성 */
@@ -176,7 +187,7 @@ public class FashionPostService {
         response.setTitle(registFashionPost.getTitle());
         response.setContent(registFashionPost.getContent());
         response.setHashtag(newPost.getHashtag());
-        response.setItems(newPost.getItems());
+        response.setItems(savedItemNames);
         response.setMember_num(registFashionPost.getMember_num());
         return response;
     }
