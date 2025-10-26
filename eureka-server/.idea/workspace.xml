@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21416bd3-b6d0-45f0-88b7-564c1f3ddd9b" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/../eureka-gateway/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-gateway/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eureka-gateway/.gradle/8.14.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-gateway/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eureka-gateway/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-gateway/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eureka-gateway/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-gateway/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-gateway/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-gateway/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/8.14.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/security/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/security/JwtTokenProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
