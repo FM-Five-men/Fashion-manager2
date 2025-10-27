@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4fd58b0-8fef-4cdb-98f5-580f2525571d" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/dto/MemberRightBadgeDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
@@ -16,7 +17,10 @@
       <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/security/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/security/JwtTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/mapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/mapper/MemberMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/java/fashionmanager/develop/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../member-service/src/main/resources/fashionmanager/develop/mapper/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../member-service/src/main/resources/fashionmanager/develop/mapper/MemberMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,26 +76,31 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.eureka-gateway 빌드.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.EurekaGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Features-KSM-EmailValidation&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.eureka-gateway 빌드.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.EurekaGatewayApplication.executor": "Run",
+    "git-widget-placeholder": "Features-KSM-EmailValidation",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="EurekaGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="eureka-gateway.main" />
