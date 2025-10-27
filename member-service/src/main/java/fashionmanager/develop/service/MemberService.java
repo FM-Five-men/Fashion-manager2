@@ -48,6 +48,32 @@ public class MemberService {
         return memberMapper.selectMemberByNum(memberNum);
     }
 
+    @Transactional
+    public MemberDTO updateMember(MemberDTO dto) {
+        // int는 null이 불가능하므로 0이면 "값이 세팅되지 않음"으로 판단
+        if (dto.getMemberNum() == 0) {
+            throw new IllegalArgumentException("memberNum is required");
+        }
+
+        // 최소 한 개라도 수정 값이 있는지 체크(문자열만 예시)
+        boolean hasAny =
+                (dto.getMemberId() != null) ||
+                        (dto.getMemberPwd() != null) ||
+                        (dto.getMemberEmail() != null) ||
+                        (dto.getMemberName() != null);
+
+        if (!hasAny) {
+            throw new IllegalArgumentException("No updatable fields provided");
+        }
+
+        int updated = memberMapper.updateMemberByNum(dto);
+        if (updated == 0) {
+            throw new IllegalStateException("No member updated");
+        }
+
+        return memberMapper.selectMemberByNum(dto.getMemberNum());
+    }
+
     public List<MemberDTO> selectMember() {
         return memberMapper.selectMember();
     }
