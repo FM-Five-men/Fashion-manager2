@@ -85,10 +85,10 @@
     <select id="selectInfluencerBadges" parameterType="Integer" resultType="string">
 
         SELECT
-        b.name
+            b.name
         FROM Assigned_Badge a
-        JOIN Badge b
-        ON b.num = a.badge_num
+                 JOIN Badge b
+                      ON b.num = a.badge_num
         WHERE a.member_num = #{memberNum}
 
     </select>

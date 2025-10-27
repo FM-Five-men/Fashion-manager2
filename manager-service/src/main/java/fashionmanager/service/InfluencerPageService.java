@@ -32,8 +32,7 @@ public class InfluencerPageService {
 
     // 같은 프로젝트 패키지에 생성하게끔 만들어주는 경로
     private final String UploadPath = new File(
-//            new File(System.getProperty("user.dir"), "uploadFiles/Influencer_Page").getAbsolutePath();
-            new File(System.getProperty("user.dir"), "../../Fashion-Manager-FE/public/images"), "influencer_page").getAbsolutePath();
+            new File(System.getProperty("user.dir"), "../../Fashion-Manager-FE/public/images"),"influencer_page").getAbsolutePath();
 
 
     // PhotoType에서 페이지 코드 가져옴
@@ -51,10 +50,7 @@ public class InfluencerPageService {
 
         // 각각 페이지의 사진 목록을 조회해서 /files/influencer_page/파일명 형태의 URL로 세팅
         for (InfluencerPageResponseDTO dto : list) {
-
-            int pageNum = dto.getNum();          // INFLUENCER_PAGE.NUM
-            Integer mNum = dto.getMemberNum();   // MEMBER.NUM (인플루언서 회원번호)
-
+            int pageNum = dto.getNum();
             List<String> urls = photoRepository
                     .findAllByPostNumAndPhotoCategoryNum(pageNum, INFLUENCER_PAGE_CODE)
                     .stream()
@@ -62,19 +58,9 @@ public class InfluencerPageService {
                     .map(p -> "/images/influencer_page/" + p.getName())
                     .toList();
             dto.setPhotoPaths(urls);
-
-        if (mNum != null) {
-            List<String> badges = influencerPageMapper.selectInfluencerBadges((int) mNum.longValue());
-            dto.setBadges(badges != null ? badges : Collections.emptyList());
-        } else {
-            dto.setBadges(Collections.emptyList());
         }
-    }
         return list;
     }
-
-
-
 
 
     // 페이지 생성 (+ 선택적 사진 업로드)
@@ -128,7 +114,7 @@ public class InfluencerPageService {
                 photoEntity.setPhotoCategoryNum(INFLUENCER_PAGE_CODE);
                 photoRepository.save(photoEntity);
 
-                urls.add("/images/influencer_page/" + savedFileName);     // 추가
+                urls.add("/images/influencer_page/" + savedFileName); //  수정
             }
         }
 
