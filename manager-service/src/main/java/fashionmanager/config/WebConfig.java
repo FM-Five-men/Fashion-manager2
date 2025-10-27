@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.io.File;
-
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
@@ -15,12 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     // yml에서 설정값 주입 — 기본값은 현재 실행 경로(user.dir)/uploadFiles/
     @Value("${file.upload-root:${user.dir}/uploadFiles}")
-    private String uploadDir2;
-
-    private final String uploadDir = new File(
-            System.getProperty("user.dir"),
-            "../../Fashion-Manager-FE/public/images")
-            .getAbsolutePath();
+    private String uploadDir;
 
 
     @Override
@@ -29,8 +22,6 @@ public class WebConfig implements WebMvcConfigurer {
 
         // /files/** 요청 → 실제 파일 경로로 매핑
         registry.addResourceHandler("/files/**")
-                .addResourceLocations("file:///" + uploadDir2 + "/");
-
-        registry.addResourceHandler("/images/**").addResourceLocations("file:///" + uploadDir + "/");
+                .addResourceLocations("file:///" + uploadDir + "/");
     }
 }
