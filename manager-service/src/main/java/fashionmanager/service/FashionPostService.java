@@ -114,9 +114,9 @@ public class FashionPostService {
         }
         /* 설명. 3-1. photo table에 게시물 사진 등록, 사진 카테고리 번호 1 = 패션 게시물 */
         if (postFiles != null && !postFiles.isEmpty()) {
-            File uploadDir = new File(postUploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdirs(); // 경로에 해당하는 폴더가 없으면 생성해줌
+            File uploadDir2 = new File(postUploadPath);
+            if (!uploadDir2.exists()) {
+                uploadDir2.mkdirs(); // 경로에 해당하는 폴더가 없으면 생성해줌
             }
             for (MultipartFile imageFile : postFiles) {
                 String originalFileName = imageFile.getOriginalFilename();
@@ -139,9 +139,9 @@ public class FashionPostService {
         }
         /* 설명. 3-2. 패션 아이템 사진 등록, 사진 카테고리 번호 4 = 패션 아이템 */
         if (itemFiles != null && !itemFiles.isEmpty()) {
-            File uploadDir = new File(fashionItemsUploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdirs(); // 경로에 해당하는 폴더가 없으면 생성해줌
+            File uploadDir2 = new File(fashionItemsUploadPath);
+            if (!uploadDir2.exists()) {
+                uploadDir2.mkdirs(); // 경로에 해당하는 폴더가 없으면 생성해줌
             }
             for (MultipartFile imageFile : itemFiles) {
                 String originalFileName = imageFile.getOriginalFilename();
@@ -302,9 +302,9 @@ public class FashionPostService {
     private void saveNewPhotos(FashionPostEntity post, String uploadPath,
                                List<MultipartFile> imageFiles, int categoryNum) {
         int postNum = post.getNum();
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdirs();
+        File uploadDir2 = new File(uploadPath);
+        if (!uploadDir2.exists()) {
+            uploadDir2.mkdirs();
         }
         for (MultipartFile imageFile : imageFiles) {
             String originalFileName = imageFile.getOriginalFilename();
