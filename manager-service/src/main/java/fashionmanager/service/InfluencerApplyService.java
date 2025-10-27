@@ -33,9 +33,8 @@ public class InfluencerApplyService {
 //    private String UploadPath = "C:\\uploadFiles\\Influencer_Apply";
 
     // 같은 프로젝트 패키지에 생성하게끔 만들어주는 경로
-    private final String UploadPath =
-//            new File(System.getProperty("user.dir"), "uploadFiles/Influencer_Apply").getAbsolutePath();
-            new File(System.getProperty("user.dir"), "../../Fashion-Manager-FE/public/images").getAbsolutePath();
+    private final String UploadPath = new File(
+            new File(System.getProperty("user.dir"), "../../Fashion-Manager-FE/public/images"),"influencer_apply").getAbsolutePath();
 
     // PhotoType에서 페이지 코드 가져옴
     private static final int INFLUENCER_APPLY_CODE = PhotoType.INFLUENCER_APPLY.getCode();
@@ -53,7 +52,7 @@ public class InfluencerApplyService {
                 influencerApplyMapper.selectResultApply(
                         title, content, accept, memberNum, memberName);
 
-        // 각각 페이지의 사진 목록을 조회해서 /images/influencer_Apply/파일명 형태의 URL로 세팅
+        // 각각 페이지의 사진 목록을 조회해서 /files/influencer_Apply/파일명 형태의 URL로 세팅
         for (InfluencerApplyResponseDTO dto : list) {
             int pageNum = dto.getNum();
             List<String> urls = photoRepository
