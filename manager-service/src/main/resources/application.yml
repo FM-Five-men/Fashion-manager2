@@ -55,6 +55,7 @@ eureka:
 
 # 수정부분
 file:
-  upload-root: "C:/3rd project/public/images"
+  upload-root: "C:/3rdProjectFE/public/images"
+
 
 
