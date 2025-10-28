@@ -88,26 +88,18 @@ public class MemberService {
         return memberMapper.selectMemberByNum(dto.getMemberNum());
     }
 
-
     public List<MemberDTO> selectMember() {
         return memberMapper.selectMember();
     }
+
     public int insertAdmin(InsertMemberDTO insertMemberDTO) {
         boolean check1 = insertMemberDTO.getMemberId() == null || "".equals(insertMemberDTO.getMemberId());
         boolean check2 = insertMemberDTO.getMemberPwd() == null || "".equals(insertMemberDTO.getMemberPwd());
         boolean check3 = insertMemberDTO.getMemberName() == null || "".equals(insertMemberDTO.getMemberName());
         boolean check4 = insertMemberDTO.getMemberEmail() == null || "".equals(insertMemberDTO.getMemberEmail());
         boolean check5 = insertMemberDTO.getMemberAge() == 0;
-        boolean check6 = !"남성".equals(insertMemberDTO.getMemberGender()) && !"여성".equals(insertMemberDTO.getMemberGender());
+        boolean check6 = insertMemberDTO.getMemberGender() != '남' && insertMemberDTO.getMemberGender() != '여';
         if (check1 || check2 || check3 || check4 || check5 || check6) {
-            System.out.println("🚨 [회원 등록 검증 실패]");
-            if (check1) System.out.println(" - 아이디가 비어 있거나 null입니다.");
-            if (check2) System.out.println(" - 비밀번호가 비어 있거나 null입니다.");
-            if (check3) System.out.println(" - 이름이 비어 있거나 null입니다.");
-            if (check4) System.out.println(" - 이메일이 비어 있거나 null입니다.");
-            if (check5) System.out.println(" - 나이가 0이거나 미입력 상태입니다.");
-            if (check6) System.out.println(" - 성별이 '남성' 또는 '여성'이 아닙니다. (현재 입력값: " + insertMemberDTO.getMemberGender() + ")");
-
             return 0;
         }
         insertMemberDTO.setMemberPwd(bCryptPasswordEncoder.encode(insertMemberDTO.getMemberPwd()));
@@ -121,17 +113,8 @@ public class MemberService {
         boolean check3 = insertMemberDTO.getMemberName() == null || "".equals(insertMemberDTO.getMemberName());
         boolean check4 = insertMemberDTO.getMemberEmail() == null || "".equals(insertMemberDTO.getMemberEmail());
         boolean check5 = insertMemberDTO.getMemberAge() == 0;
-        boolean check6 = !"남성".equals(insertMemberDTO.getMemberGender()) && !"여성".equals(insertMemberDTO.getMemberGender());
+        boolean check6 = insertMemberDTO.getMemberGender() != '남' && insertMemberDTO.getMemberGender() != '여';
         if (check1 || check2 || check3 || check4 || check5 || check6) {
-
-            System.out.println("🚨 [회원 등록 검증 실패]");
-            if (check1) System.out.println(" - 아이디가 비어 있거나 null입니다.");
-            if (check2) System.out.println(" - 비밀번호가 비어 있거나 null입니다.");
-            if (check3) System.out.println(" - 이름이 비어 있거나 null입니다.");
-            if (check4) System.out.println(" - 이메일이 비어 있거나 null입니다.");
-            if (check5) System.out.println(" - 나이가 0이거나 미입력 상태입니다.");
-            if (check6) System.out.println(" - 성별이 '남성' 또는 '여성'이 아닙니다. (현재 입력값: " + insertMemberDTO.getMemberGender() + ")");
-
             return 0;
         }
         insertMemberDTO.setMemberPwd(bCryptPasswordEncoder.encode(insertMemberDTO.getMemberPwd()));

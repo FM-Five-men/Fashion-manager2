@@ -14,14 +14,11 @@ public class InsertMemberDTO {
     private String memberEmail;
     private String memberName;
     private int memberAge;
-    private char memberGender;
-    private int memberHeight;
-    private int memberWeight;
-
-    // 새로 추가된 DB 컬럼(전화번호, 주소)
-    private String memberPhone;
-    private String memberAddress;
-
+    private String memberGender;
+    private int memberHeight = 170;
+    private int memberWeight = 60;
+    private String memberPhone = "010-1234-5678";
+    private String memberAddress = "서울시";
     private String memberStatus = "활동중";
     private boolean memberMessageAllow = true;
 }
