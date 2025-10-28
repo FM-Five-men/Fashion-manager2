@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21416bd3-b6d0-45f0-88b7-564c1f3ddd9b" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/../manager-service/build/reports/problems/problems-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka-gateway/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-gateway/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manager-service/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manager-service/src/main/java/fashionmanager/service/InfluencerApplyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/src/main/java/fashionmanager/service/InfluencerApplyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manager-service/src/main/java/fashionmanager/service/InfluencerPageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/src/main/java/fashionmanager/service/InfluencerPageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manager-service/src/main/java/fashionmanager/service/MenteeApplyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../manager-service/src/main/java/fashionmanager/service/MenteeApplyService.java" afterDir="false" />
-    </list>
+    <list default="true" id="21416bd3-b6d0-45f0-88b7-564c1f3ddd9b" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,7 +69,8 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.EurekaServerApplication.executor": "Run",
-    "git-widget-placeholder": "Features-KSM-EmailValidation 병합 중",
+    "git-widget-placeholder": "features",
+    "last_opened_file_path": "D:/fashion-manager(git)/eureka-server",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -159,6 +146,7 @@
       <workItem from="1759386104821" duration="642000" />
       <workItem from="1760780942477" duration="771000" />
       <workItem from="1760782764136" duration="1226000" />
+      <workItem from="1761619037159" duration="572000" />
     </task>
     <servers />
   </component>
