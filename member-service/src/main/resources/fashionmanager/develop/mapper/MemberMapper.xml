@@ -54,20 +54,43 @@
     <update id="updateMemberByNum" parameterType="fashionmanager.develop.dto.MemberDTO">
         UPDATE MEMBER
         <set>
-            ID               = #{memberId},
-            PWD              = #{memberPwd},
-            EMAIL            = #{memberEmail},
-            NAME             = #{memberName},
+            <if test="memberId != null and memberId != ''">
+                ID = #{memberId},
+            </if>
 
-            -- 새로 추가한 부분 --
+            <!-- 🔐 비밀번호: 서비스에서 이미 BCrypt 인코딩된 값이 있을 때만 -->
+            <if test="memberPwd != null and memberPwd != ''">
+                PWD = #{memberPwd},
+            </if>
 
-            AGE              = #{memberAge},
-            GENDER           = #{memberGender, jdbcType=CHAR},
-            HEIGHT           = #{memberHeight},
-            WEIGHT           = #{memberWeight},
+            <if test="memberEmail != null and memberEmail != ''">
+                EMAIL = #{memberEmail},
+            </if>
+            <if test="memberName != null and memberName != ''">
+                NAME = #{memberName},
+            </if>
 
-            PHONE            = #{memberPhone},
-            ADDRESS          = #{memberAddress}
+            <!-- 숫자는 null 체크만 (0을 유효값으로 쓸 수 있으니) -->
+            <if test="memberAge != null">
+                AGE = #{memberAge},
+            </if>
+            <if test="memberHeight != null">
+                HEIGHT = #{memberHeight},
+            </if>
+            <if test="memberWeight != null">
+                WEIGHT = #{memberWeight},
+            </if>
+
+            <if test="memberGender != null and memberGender != ''">
+                GENDER = #{memberGender},
+            </if>
+
+            <if test="memberPhone != null and memberPhone != ''">
+                PHONE = #{memberPhone},
+            </if>
+            <if test="memberAddress != null and memberAddress != ''">
+                ADDRESS = #{memberAddress},
+            </if>
         </set>
         WHERE NUM = #{memberNum}
     </update>
@@ -114,6 +137,10 @@
           , A.MONTHLY_GOOD_COUNT AS memberMonthlyGoodCount
           , A.CHEER_COUNT AS memberCheerCount
           , A.MESSAGE_ALLOW AS memberMessageAllow
+             -- 새로 추가된 컬럼 --
+          , A.PHONE    AS memberPhone
+          , A.ADDRESS  AS memberAddress
+
           , B.MEMBER_STATE_NUM AS memberStateNum
           , C.NAME AS memberStateName
         FROM MEMBER A

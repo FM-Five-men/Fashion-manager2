@@ -55,6 +55,20 @@ public class MemberService {
             throw new IllegalArgumentException("memberNum is required");
         }
 
+        // ✅ 비밀번호 해시 추가 (있을 때만)
+        if (dto.getMemberPwd() != null && !dto.getMemberPwd().isBlank()) {
+            // 이미 bcrypt 형태($2a$로 시작)면 재인코딩 방지
+            if (!dto.getMemberPwd().startsWith("$2a$") &&
+                    !dto.getMemberPwd().startsWith("$2b$") &&
+                    !dto.getMemberPwd().startsWith("$2y$")) {
+
+                dto.setMemberPwd(bCryptPasswordEncoder.encode(dto.getMemberPwd()));
+            }
+        } else {
+            // 비번 안 바꿀 경우 null로 처리 → Mapper의 <if>에서 제외
+            dto.setMemberPwd(null);
+        }
+
         // 최소 한 개라도 수정 값이 있는지 체크(문자열만 예시)
         boolean hasAny =
                 (dto.getMemberId() != null) ||
@@ -79,14 +93,12 @@ public class MemberService {
     }
 
     public int insertAdmin(InsertMemberDTO insertMemberDTO) {
-        log.info("insertMemberDTO:{}", insertMemberDTO);
-
         boolean check1 = insertMemberDTO.getMemberId() == null || "".equals(insertMemberDTO.getMemberId());
         boolean check2 = insertMemberDTO.getMemberPwd() == null || "".equals(insertMemberDTO.getMemberPwd());
         boolean check3 = insertMemberDTO.getMemberName() == null || "".equals(insertMemberDTO.getMemberName());
         boolean check4 = insertMemberDTO.getMemberEmail() == null || "".equals(insertMemberDTO.getMemberEmail());
         boolean check5 = insertMemberDTO.getMemberAge() == 0;
-        boolean check6 = !insertMemberDTO.getMemberGender().equals("남성") && !insertMemberDTO.getMemberGender().equals("여성");
+        boolean check6 = insertMemberDTO.getMemberGender() != '남' && insertMemberDTO.getMemberGender() != '여';
         if (check1 || check2 || check3 || check4 || check5 || check6) {
             return 0;
         }
@@ -101,7 +113,7 @@ public class MemberService {
         boolean check3 = insertMemberDTO.getMemberName() == null || "".equals(insertMemberDTO.getMemberName());
         boolean check4 = insertMemberDTO.getMemberEmail() == null || "".equals(insertMemberDTO.getMemberEmail());
         boolean check5 = insertMemberDTO.getMemberAge() == 0;
-        boolean check6 = !insertMemberDTO.getMemberGender().equals("남성") && !insertMemberDTO.getMemberGender().equals("여성");
+        boolean check6 = insertMemberDTO.getMemberGender() != '남' && insertMemberDTO.getMemberGender() != '여';
         if (check1 || check2 || check3 || check4 || check5 || check6) {
             return 0;
         }
