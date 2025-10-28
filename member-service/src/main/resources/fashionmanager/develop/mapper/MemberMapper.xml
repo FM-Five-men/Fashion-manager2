@@ -114,6 +114,10 @@
           , A.MONTHLY_GOOD_COUNT AS memberMonthlyGoodCount
           , A.CHEER_COUNT AS memberCheerCount
           , A.MESSAGE_ALLOW AS memberMessageAllow
+             -- 새로 추가된 컬럼 --
+          , A.PHONE    AS memberPhone
+          , A.ADDRESS  AS memberAddress
+
           , B.MEMBER_STATE_NUM AS memberStateNum
           , C.NAME AS memberStateName
         FROM MEMBER A
