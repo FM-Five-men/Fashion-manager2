@@ -98,7 +98,7 @@ public class MemberService {
         boolean check3 = insertMemberDTO.getMemberName() == null || "".equals(insertMemberDTO.getMemberName());
         boolean check4 = insertMemberDTO.getMemberEmail() == null || "".equals(insertMemberDTO.getMemberEmail());
         boolean check5 = insertMemberDTO.getMemberAge() == 0;
-        boolean check6 = insertMemberDTO.getMemberGender() != '남' && insertMemberDTO.getMemberGender() != '여';
+        boolean check6 = !insertMemberDTO.getMemberGender().equals("남성") && !insertMemberDTO.getMemberGender().equals("여성");
         if (check1 || check2 || check3 || check4 || check5 || check6) {
             return 0;
         }
@@ -113,7 +113,7 @@ public class MemberService {
         boolean check3 = insertMemberDTO.getMemberName() == null || "".equals(insertMemberDTO.getMemberName());
         boolean check4 = insertMemberDTO.getMemberEmail() == null || "".equals(insertMemberDTO.getMemberEmail());
         boolean check5 = insertMemberDTO.getMemberAge() == 0;
-        boolean check6 = insertMemberDTO.getMemberGender() != '남' && insertMemberDTO.getMemberGender() != '여';
+        boolean check6 = !insertMemberDTO.getMemberGender().equals("남성") && !insertMemberDTO.getMemberGender().equals("여성");
         if (check1 || check2 || check3 || check4 || check5 || check6) {
             return 0;
         }
